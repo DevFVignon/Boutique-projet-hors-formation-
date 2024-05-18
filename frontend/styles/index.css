@@ -62,6 +62,7 @@ section h2:hover {
 }
 .produits h2 {
   text-align: center; /* Centrer le titre */
+  display: contents;
 }
 .produits .produits__fiche {
   display: flex;

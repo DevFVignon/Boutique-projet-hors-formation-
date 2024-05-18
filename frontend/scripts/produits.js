@@ -4,6 +4,9 @@ messageConnected();
 
 const token = getToken();
 
+const nav_account = document.querySelector('.nav_account');
+const divProduit = document.querySelector('.divProduit');
+
 // Fonction asynchrone pour récupérer tous les produits de la BdD
 async function afficherProduits() {
     try {
@@ -71,28 +74,35 @@ afficherProduits();
 // Affichage des boutons pour ajouter un produit et se déconnecter si l'utilisateur est connecté
 if (isUserLoggedIn()) {
     // Bouton pour ajouter un produit
-    const divBtnAjoutPdt = document.querySelector(".ajoutPdt_btn");
-    if (divBtnAjoutPdt) {
+    //const divBtnAjoutPdt = document.querySelector(".ajoutPdt_btn");
+    //if (divBtnAjoutPdt) {
         const btnAjoutPdt = document.createElement('button');
         btnAjoutPdt.innerText = 'Ajouter un produit';
         const lienAjout = document.createElement('a');
         lienAjout.href = './ficheAjoutPdt.html';
         lienAjout.appendChild(btnAjoutPdt);
-        divBtnAjoutPdt.appendChild(lienAjout);
-    }
+        divProduit.appendChild(lienAjout);
+    //}
 
     // Bouton pour se déconnecter
-    const divDeconnexion = document.querySelector(".deconnexion");
-    if (divDeconnexion) {
+    //const divDeconnexion = document.querySelector(".deconnexion");
+    //if (divDeconnexion) {
         const btnDeconnexion = document.createElement('button');
+        btnDeconnexion.classList.add("nav_account--btn");
         btnDeconnexion.innerText = 'Se déconnecter';
-        divDeconnexion.appendChild(btnDeconnexion);
+        nav_account.appendChild(btnDeconnexion);
 
-        divDeconnexion.addEventListener('click', () => {
+        const btnCreateAccount = document.querySelector('.newAccount');
+        nav_account.removeChild(btnCreateAccount);
+
+        const btnLogin = document.querySelector('.login');
+        nav_account.removeChild(btnLogin);
+
+        btnDeconnexion.addEventListener('click', () => {
             localStorage.removeItem('token');
             window.location.href = './index.html';
         });
     }
-} else {
+ else {
     console.log('L\'utilisateur n\'est pas connecté.');
 }
