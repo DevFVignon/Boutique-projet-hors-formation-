@@ -59,6 +59,7 @@ section h2:hover {
   display: flex;
   flex-direction: column; /* Changez la direction pour que les éléments soient empilés verticalement */
   align-items: center;
+  margin: 30px 0px;
 }
 .produits h2 {
   text-align: center; /* Centrer le titre */
@@ -76,6 +77,9 @@ section h2:hover {
   padding: 5px 10px 5px 10px;
   border: 1px solid #ccc;
   cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3fr 0.9fr 0.1fr 1fr 0.1fr;
 }
 .produits .produits__fiche-container img {
   width: 100%;
@@ -83,12 +87,21 @@ section h2:hover {
   transform-origin: bottom;
   -o-object-fit: cover;
      object-fit: cover;
+  height: -webkit-fill-available;
 }
 .produits .produits__fiche-container img:hover {
   transform: scale(1.4);
 }
 .produits .produits__fiche-container h3:hover {
   text-decoration: underline;
+}
+.produits .produits__fiche-container .addToTheCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.produits .produits__fiche-container .addToTheCard div {
+  padding: 0px 10px;
 }
 .produits .produits__btnAjoutPdt {
   background-color: rgb(187, 251, 166);

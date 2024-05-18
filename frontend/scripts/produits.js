@@ -62,6 +62,59 @@ async function afficherProduits() {
             produitContainer.addEventListener('click', () => {
                 window.open(`./fichePdt.html?id=${produitId}`, '_blank');
             });
+
+            if (isUserLoggedIn()) {
+                const addTotheCart = document.createElement('div');
+                addTotheCart.classList.add("addToTheCard");
+
+                const productName = produitId; 
+
+                // Utiliser le nom du produit comme identifiant unique pour le localStorage
+                const productId = `${productName.replace(/\s+/g, '_').toLowerCase()}_id`;
+
+                // Créer le bouton moins
+                const btnMinus = document.createElement("button");
+                btnMinus.innerText = '-';
+                addTotheCart.appendChild(btnMinus);
+
+                // Créer l'affichage de la quantité
+                const quantity = document.createElement("div");
+                let quantityValue = localStorage.getItem(productId) ? parseInt(localStorage.getItem(productId)) : 0;
+                quantity.innerText = quantityValue;
+                addTotheCart.appendChild(quantity);
+
+                // Créer le bouton plus
+                const btnPlus = document.createElement("button");
+                btnPlus.innerText = '+';
+                addTotheCart.appendChild(btnPlus);
+
+                // Ajouter le conteneur du produit au conteneur principal
+                produitContainer.appendChild(addTotheCart);
+
+                // Fonction pour mettre à jour la quantité et le localStorage
+                function updateQuantity(value) {
+                    quantityValue = value;
+                    quantity.innerText = quantityValue;
+                    localStorage.setItem(productId, quantityValue);
+                }
+
+                // Événement pour le bouton moins
+                btnMinus.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    if (quantityValue > 0) {
+                        updateQuantity(quantityValue - 1);
+                    }
+                });
+
+                // Événement pour le bouton plus
+                btnPlus.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    updateQuantity(quantityValue + 1);
+                });
+            }
+
         });
     } catch (error) {
         console.error("Une erreur s'est produite lors du chargement des données :", error);
@@ -102,6 +155,7 @@ if (isUserLoggedIn()) {
             localStorage.removeItem('token');
             window.location.href = './index.html';
         });
+
     }
  else {
     console.log('L\'utilisateur n\'est pas connecté.');
