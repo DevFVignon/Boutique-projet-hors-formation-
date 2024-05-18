@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion au compte</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <script type="module" src="./scripts/loginAccount.js" defer></script>
+    <script type="module" src="./scripts/functions.js" defer></script>
+
+</head>
+
+<body>
+    <header>
+        <h1>Boutique Basket de Flo - Connexion au compte</h1>
+        <nav>
+            <div class="nav">
+                <img src="./items/logo.jpg" alt='Logo boutique' class="nav_logo">
+                <div class="nav_btn">
+                    <button class="nav_btn--link"><a href="index.html">Accueil</a></button>
+                    <button class="nav_btn--link"><a href="assistance.html">Assistance</a></button>
+                </div>
+                <div class="nav_account">
+                    <button class="nav_account--btn"><a href="createAccount.html">Sign in</a></button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <form class="loginAccount">
+            <label for="email" ></label>Votre email : <input type="text" name="user-email" id="email"><br>
+            <label for="password" ></label>Votre mot de passe : <input type="text" name="user-password" id="password"><br>
+            <button type=submit class="loginAccount_btn">Vous connecter</button>
+        </form>
+    </main>
+    
+    <footer>
+        <p>Droit d'auteur © 2024. Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>

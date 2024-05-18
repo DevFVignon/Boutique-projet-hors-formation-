@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil boutique de Flo</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <script type="module" src="./scripts/functions.js" defer></script>
+    <script type="module" src="./scripts/produits.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Boutique Basket de Flo</h1>
+        <nav>
+            <div class="nav">
+                <img src="./items/logo.jpg" alt='Logo boutique' class="nav_logo">
+                <a href="#" alt="ToutLesProduits" class="nav_categorie">Voir tout les produits</a>
+                <a href="#" alt="Categories" class="nav_categorie">Catégories</a>
+                <div class="nav_btn">
+                    <button class="nav_btn--link"><a href="panier.html">Panier</a></button>
+                    <button class="nav_btn--link"><a href="assistance.html">Assistance</a></button>
+                </div>
+                <div class="nav_account">
+                    <button class="nav_account--btn"><a href="createAccount.html">Sign In</a></button>
+                    <button class="nav_account--btn"><a href="loginAccount.html">Login</a></button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="divMessageConnected"></div>
+        <section class="produits">
+            <h2>Produits</h2>
+            <div class="produits__fiche">
+            </div>
+            <div class="ajoutPdt_btn"></div>
+            <div class="deconnexion"></div>
+        </section>        
+        
+        <section class="suggestion">
+            <h2>Suggestion pour vous</h2>
+            <p>Vous n'avez pas encore de produits suggérés, crééz un compte et naviguez sur le site pour en avoir.</p>
+        </section>
+    </main>
+    
+    <footer>
+        <p>Droit d'auteur © 2024. Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>

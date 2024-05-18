@@ -1,0 +1,312 @@
+// Définition des couleurs
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$success-color: #28a745;
+$error-color: #dc3545;
+$warning-color: #ffc107;
+
+header{
+    background-color: grey;
+    text-align: center;
+    padding : 10px 15px 10px 15px;
+
+    h1{
+        background-color: white;
+        border-radius: 15px;
+        margin: 0px 200px 10px 200px;
+    }
+
+    img{
+        height: 50px;
+        width: 50px;
+    }
+
+    nav {
+        .nav{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        .nav_logo{
+            transition: transform 0.5s;
+            &:hover{transform : scale(1.4);}
+        }
+    
+        .nav_btn, .nav_account {
+            .nav_btn--link, .nav_account--btn {
+                height: 30px;
+                width: 150px;
+                transition: transform 0.5s;
+                &:hover {
+                    transform: scale(1.4);
+                }
+                a{
+                    color: black;
+                    text-decoration: none;
+                }
+            }
+        }
+        
+    
+        .nav_categorie{
+            text-decoration: none;
+            color: black;   
+        }
+        .nav_categorie:hover {
+            text-decoration: underline;
+        }
+    }
+    }   
+}
+
+
+section {
+    h2 {
+        &:hover {
+            transform: perspective(75px) rotateX(5deg);
+            transition: transform 0.4s;
+        }
+    }
+}
+
+.suggestion {
+    background-color: rgba(252, 252, 118, 1); /* Fond de couleur jaune */
+    padding: 10px; /* Ajoutez un peu de marge intérieure pour l'espace */
+}
+
+.produits {
+    display: flex;
+    flex-direction: column; /* Changez la direction pour que les éléments soient empilés verticalement */
+    align-items: center;
+
+    h2 {
+        text-align: center; /* Centrer le titre */
+    }
+
+    .produits__fiche {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Centrer horizontalement les produits */
+        margin-top: 20px; /* Ajoute un peu d'espace entre le titre et les produits */
+    }
+
+    .produits__fiche-container {
+        width: 200px;
+        margin: 10px;
+        padding: 5px 10px 5px 10px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+
+        img {
+            width: 100%;
+            transition: transform 0.3s;
+            transform-origin: bottom;
+            // aspect-ratio: 4 / 5;
+            object-fit: cover;
+
+            &:hover {
+                transform: scale(1.40);
+            }
+        }
+
+        h3 {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .produits__btnAjoutPdt{
+        background-color: rgba(187, 251, 166);
+        margin: 30px 0px;
+        text-decoration: none;
+        border-radius: 5px;
+        height : 40px;
+        width:200px;
+    }
+}
+
+// Style de base pour les formulaires
+.ajoutPdt_form, .createAccount, .loginAccount {
+    max-width: 400px;
+    margin: auto;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid $secondary-color;
+    border-radius: 5px;
+  
+    // Style pour les étiquettes
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+  
+    // Style pour les champs de saisie
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid $secondary-color;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+  
+    // Style pour les boutons
+    .form--button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 15px;;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+  
+      &.primary {
+        background-color: $primary-color;
+        color: #fff;
+  
+        &:hover {
+          background-color: darken($primary-color, 10%);
+        }
+      }
+  
+      &.secondary {
+        background-color: $secondary-color;
+        color: #fff;
+  
+        &:hover {
+          background-color: darken($secondary-color, 10%);
+        }
+      }
+    }
+  
+    // Style pour les messages d'erreur
+    .error-message {
+      color: $error-color;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  }
+
+  .nomPdt{
+    margin-top : 35px;
+    width: 900px;
+    height: 40px;
+    color: black;
+  }
+
+.containerPhoto{
+	background-color: rgba(211, 237, 236);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 15px 0px;
+		position: relative;
+}
+
+.fa-image{
+	display: block;
+	padding: 80px;
+	font-size: 100px;
+	color: rgba(179, 185, 184);
+}
+
+.joinPhoto{
+	background-color: rgba(179, 185, 184) ;
+	color: rgba(69, 91, 150);
+}
+
+.inputPhoto{
+	background-color: rgba(179, 185, 184);
+	padding: 10px 25px;
+	margin : 0px 10px;
+	text-align: center;
+	border-radius: 20px;;
+}
+
+input[type="file"]{
+	display: none;
+}
+
+.validPhoto{
+	background-color: rgba(179, 185, 184) ;
+	min-width: 60%;
+}
+
+.green-bar{
+	height:1px;
+	border-bottom:#1D6154 1px solid;
+	margin-top: 50px;
+}
+
+input.validPhoto {	
+	margin-bottom: 0px;
+}
+
+#imagePreview {
+	width: 80%;
+	height: 65%;
+	object-fit: cover;
+	position: absolute;
+	top: 0px;
+    background-image: center;
+    background-repeat: no-repeat;        
+    background-position: center;
+    background-size: cover
+}
+
+.produits__ficheDetaillee{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 15px;
+    padding: 15px;
+
+    img{
+        width: 90%;
+        object-fit: cover;
+    }
+
+    .infoProduit{
+        display: flex;
+        flex-direction: row;
+    }
+
+    button{
+        width: fit-content;
+        margin-right: 15px;
+    }
+}
+
+footer{
+    background-color: rgb(211, 205, 204);
+}
+
+@media screen and (max-width: 400px) and (max-height: 700px) {
+    header{
+        h1{
+            margin:0px 0px 10px 0px;
+        }
+        .nav .nav_btn{
+            width: 150px;
+        }
+        nav .nav .nav_categorie{
+            display:none;
+        }
+    }
+    .produits_fiche--container {
+        width : 150px;
+}}
+
+
+
+
+
+
+

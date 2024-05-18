@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier le produit</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" >
+    <script type="module"  src="./scripts/ficheModifPdt.js" defer></script> 
+    <script type=" module" src="./scripts/functions.js" defer></script>
+
+</head>
+
+<body>
+    <header>
+        <h1>Boutique Basket de Flo</h1>
+        <nav>
+            <div class="nav">
+                <img src="./items/logo.jpg" alt='Logo boutique' class="nav_logo">
+                <a href="#" alt="ToutLesProduits" class="nav_categorie">Voir tout les produits</a>
+                <!-- <a href="#" alt="Hommes" class="nav_categorie">Hommes</a> -->
+                <!-- <a href="#" alt="Femmes" class="nav_categorie">Femmes</a> -->
+                <a href="#" alt="Categories" class="nav_categorie">Catégories</a>
+                <div class="nav_btn">
+                    <button class="nav_btn--link"><a href="index.html">Accueil</a></button>
+                    <button class="nav_btn--link"><a href="assistance.html">Assistance</a></button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- formulaire pour que l'utilisateur ajoute son produit  -->
+        <div class="divNomPdt"></div>
+        <form class="ajoutPdt_form">
+            <div class="containerPhoto">
+                <div id="imagePreview"></div>
+                <i class="fa-regular fa-image"></i>
+                <label for="photo" class="inputPhoto">+ Choisir une nouvelle photo</label>
+                <p>jpg, png: 4o max</p>
+                <input class="joinPhoto" type="file" id="photo" name="produit-photo" >
+            </div>
+            <label for="nom" ></label>Le nom de votre produit : <input type="text" name="produit-nom" id="nom"><br>
+            <label for="prix" ></label>Son prix TTC : <input type="number" name="produit-prix" id="prix"><br>
+            <label for="categorie" ></label>Sa catégorie : <input type="text" name="produit-categorie" id="categorie"><br>
+            <!-- <label for="image" ></label>Une image : <input type="file" name="produit" id="image"><br> -->
+            <p>Décrivez votre produit : </p><input type="textarea" name="produit-description" id="description"><br>
+            <button type=submit class="form--button">Modifier le produit</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>Droit d'auteur © 2024. Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>
