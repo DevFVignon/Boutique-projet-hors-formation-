@@ -1,10 +1,7 @@
-export function updatePanier(){
-
-document.addEventListener('DOMContentLoaded', async () => {
+export async function updatePanier() {
     const panier = document.querySelector('.panier');
-    const cartItems = document.createElement('div');
-    cartItems.classList.add('cart-items');
-    panier.appendChild(cartItems);
+    const cartItems = panier.querySelector('.cart-items');
+    cartItems.innerHTML = ''; // Vider le conteneur avant de le remplir
 
     let totalAmount = 0;
 
@@ -30,50 +27,47 @@ document.addEventListener('DOMContentLoaded', async () => {
         const key = localStorage.key(i);
         const quantity = parseInt(localStorage.getItem(key));
 
-        // Supposons que les clés des produits sont des IDs générés automatiquement qui commencent par "66"
-        if (key.startsWith('66')) {
-            if (quantity > 0) {
-                try {
-                    const product = await fetchData(`http://localhost:3000/api/stuff/${key}`);
-                    
-                    if (product) {
-                        // Debugging output
-                        console.log(typeof(product.product.prix));
-                        console.log('Quantity:', quantity);
+        if (key.startsWith('66') && quantity > 0) {
+            try {
+                const product = await fetchData(`http://localhost:3000/api/stuff/${key}`);
+                if (product) {
+                    const productDiv = document.createElement('div');
+                    productDiv.classList.add('product');
 
-                        const productDiv = document.createElement('div');
-                        productDiv.classList.add('product');
+                    const name = document.createElement('span');
+                    name.textContent = product.product.nom;
+                    productDiv.appendChild(name);
 
-                        const name = document.createElement('span');
-                        name.textContent = product.product.nom;
-                        productDiv.appendChild(name);
+                    const quantitySpan = document.createElement('span');
+                    quantitySpan.textContent = ` x ${quantity} = `;
+                    productDiv.appendChild(quantitySpan);
 
-                        const quantitySpan = document.createElement('span');
-                        quantitySpan.textContent = ` x ${quantity} = `;
-                        productDiv.appendChild(quantitySpan);
+                    const price = document.createElement('span');
+                    const totalPrice = product.product.prix * quantity;
+                    price.textContent = `${totalPrice} €`;
+                    productDiv.appendChild(price);
 
-                        const price = document.createElement('span');
-                        const totalPrice = product.product.prix * quantity;
-                        price.textContent = `${totalPrice} €`;
-                        productDiv.appendChild(price);
+                    cartItems.appendChild(productDiv);
 
-                        cartItems.appendChild(productDiv);
-
-                        totalAmount += totalPrice;
-                    }
-                } catch (e) {
-                    console.error(`Erreur lors de la récupération du produit avec l'ID "${key}":`, e);
+                    totalAmount += totalPrice;
                 }
+            } catch (e) {
+                console.error(`Erreur lors de la récupération du produit avec l'ID "${key}":`, e);
             }
         }
     }
 
-    const totalDiv = document.createElement('div');
-    totalDiv.classList.add('total');
-    totalDiv.textContent = `Total: ${totalAmount} €`;
-    panier.appendChild(totalDiv);
-});
-
+    const totalDiv = panier.querySelector('.total');
+    if (!totalDiv) {
+        const newTotalDiv = document.createElement('div');
+        newTotalDiv.classList.add('total');
+        newTotalDiv.textContent = `Total: ${totalAmount} €`;
+        panier.appendChild(newTotalDiv);
+    } else {
+        totalDiv.textContent = `Total: ${totalAmount} €`;
+    }
 }
 
-updatePanier();
+document.addEventListener('DOMContentLoaded', () => {
+    updatePanier();
+});
