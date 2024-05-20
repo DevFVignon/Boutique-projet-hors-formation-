@@ -53,6 +53,7 @@ section h2:hover {
 .suggestion {
   background-color: rgb(252, 252, 118); /* Fond de couleur jaune */
   padding: 10px; /* Ajoutez un peu de marge intérieure pour l'espace */
+  margin: 30px 0px;
 }
 
 .produits {
@@ -260,6 +261,59 @@ input.validPhoto {
   width: -moz-fit-content;
   width: fit-content;
   margin-right: 15px;
+}
+
+.panier {
+  display: none;
+}
+
+.panier.active {
+  display: block;
+}
+
+.modal-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+
+.modal-container.active {
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(162, 161, 161, 0.5);
+}
+
+.modal {
+  width: 95%;
+  max-width: 600px;
+  min-width: 300px;
+  padding: 30px;
+  background: #fff;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -65%);
+  border-radius: 10px;
+}
+
+.close-modal {
+  padding: 8px 10px;
+  border: none;
+  font-size: 18px;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  background-color: #fff;
 }
 
 footer {

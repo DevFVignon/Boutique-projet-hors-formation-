@@ -1,3 +1,5 @@
+import { isUserLoggedIn } from "./functions.js";
+
 export async function updatePanier() {
     const panier = document.querySelector('.panier');
     const cartItems = panier.querySelector('.cart-items');
@@ -63,9 +65,64 @@ export async function updatePanier() {
         newTotalDiv.classList.add('total');
         newTotalDiv.textContent = `Total: ${totalAmount} €`;
         panier.appendChild(newTotalDiv);
+        const btnValider = document.createElement('button');
+        btnValider.innerText = 'Valider la commande';
+        btnValider.classList.add('modal-trigger');
+        panier.appendChild(btnValider);
     } else {
         totalDiv.textContent = `Total: ${totalAmount} €`;
     }
+
+
+
+    // Assurez-vous de n'ajouter les éléments suivants qu'une seule fois
+    const modal = document.querySelector(".modal");
+    const modalContainer = document.querySelector(".modal-container");
+    let messagePanier = modal.querySelector('.message-panier');
+    if (!messagePanier) {
+        messagePanier = document.createElement('div');
+        messagePanier.classList.add('message-panier');
+        modal.appendChild(messagePanier);
+    }
+    let buttonAcheter = modal.querySelector('.button-acheter');
+    if (!buttonAcheter) {
+        buttonAcheter = document.createElement("button");
+        buttonAcheter.innerText = "Valider";
+        buttonAcheter.classList.add('button-acheter');
+        modal.appendChild(buttonAcheter);
+
+        // Ajouter un gestionnaire d'événements au bouton "Valider" dans la modal
+        buttonAcheter.addEventListener('click', viderPanier);
+    }
+
+    function toggleModal(price) {
+        modalContainer.classList.toggle("active");
+        messagePanier.innerText = `Votre panier s'élève à ${price} euros.`;
+    }
+
+    // Supprimer les anciens écouteurs d'événements avant d'en ajouter de nouveaux
+    const oldTriggers = document.querySelectorAll('.modal-trigger');
+    oldTriggers.forEach(trigger => trigger.removeEventListener("click", () => toggleModal(totalAmount)));
+    const modalTriggers = document.querySelectorAll(".modal-trigger");
+    modalTriggers.forEach(trigger => trigger.addEventListener("click", () => toggleModal(totalAmount)));
+
+    // Assurez-vous que le panier est visible si l'utilisateur est connecté
+    if (isUserLoggedIn()) {
+        panier.classList.add("active");
+    }
+}
+
+// Fonction pour vider le panier et réinitialiser les quantités dans le localStorage
+function viderPanier() {
+    // Parcourir toutes les clés du localStorage
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key.startsWith('66')) {
+            localStorage.setItem(key, '0');
+        }
+    }
+    updatePanier();
+    window.location.href = 'index.html';
 }
 
 document.addEventListener('DOMContentLoaded', () => {

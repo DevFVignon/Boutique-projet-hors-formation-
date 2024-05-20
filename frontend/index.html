@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil boutique de Flo</title>
     <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" >
     <script type="module" src="./scripts/functions.js" defer></script>
     <script type="module" src="./scripts/produits.js" defer></script>
     <script type="module" src="./scripts/panier.js" defer></script>
@@ -20,7 +23,7 @@
                 <a href="#" alt="ToutLesProduits" class="nav_categorie">Voir tout les produits</a>
                 <a href="#" alt="Categories" class="nav_categorie">Catégories</a>
                 <div class="nav_btn">
-                    <button class="nav_btn--link"><a href="panier.html">Panier</a></button>
+                    <!-- <button class="nav_btn--link"><a href="panier.html">Panier</a></button> -->
                     <button class="nav_btn--link"><a href="assistance.html">Assistance</a></button>
                 </div>
                 <div class="nav_account">
@@ -42,12 +45,27 @@
         </section>        
         
         <section class="panier">Panier
+
+            <div class="modal-container">
+                <div class="overlay modal-trigger"></div>
+                <div class="modal">
+                    <button class="close-modal modal-trigger"><i class="fa-solid fa-xmark"></i></button>
+                    <h3>Panier</h3>
+                </div>
+            </div>    
+
             <div class="cart-items"></div>
         </section>
 
         <section class="suggestion">
-            <h2>Suggestion pour vous</h2>
-            <p>Vous n'avez pas encore de produits suggérés, crééz un compte et naviguez sur le site pour en avoir.</p>
+            <h2>Point culture : les derniers champions NBA</h2>
+                <ul>
+                    <li>2023 : Denver Nuggets</li>
+                    <li>2022 : Golden State Warriors</li>
+                    <li>2021 : Milwaukee Bucks</li>
+                    <li>2020 : Los Angeles Lakers</li>
+                    <li>2019 : Toronto Raptors</li>
+                </ul>
         </section>
     </main>
     

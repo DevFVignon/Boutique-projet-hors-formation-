@@ -40,7 +40,10 @@ function messageConnected(){
         const messageConnected = document.createElement('p');
         messageConnected.innerText=`Vous êtes connecté.`;
         divMessageConnected.appendChild(messageConnected);
-    }
+    }else{const divMessageConnected = document.querySelector(".divMessageConnected");
+    const messageConnected = document.createElement('p');
+    messageConnected.innerText=`Bienvenue, si vous voulez faire des achats ou vendre des produits, il vous faut un compte.`;
+    divMessageConnected.appendChild(messageConnected);}
 };
 
 // Export des fonctions
