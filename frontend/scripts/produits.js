@@ -12,7 +12,7 @@ async function afficherProduits() {
     try {
         const response = await fetch('http://localhost:3000/api/stuff', {
             headers: {
-                'Authorization': `Bearer ${token}` // Si votre API nécessite un token d'authentification
+                'Authorization': `Bearer ${token}` 
             }
         });
         if (!response.ok) {
@@ -70,7 +70,7 @@ async function afficherProduits() {
                 const productName = produitId; 
 
                 // Utiliser le nom du produit comme identifiant unique pour le localStorage
-                const productId = `${productName.replace(/\s+/g, '_').toLowerCase()}_id`;
+                const productId = `${productName.replace(/\s+/g, '_').toLowerCase()}`;
 
                 // Créer le bouton moins
                 const btnMinus = document.createElement("button");
